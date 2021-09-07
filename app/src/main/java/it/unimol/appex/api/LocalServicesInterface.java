@@ -10,10 +10,10 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface LocalServicesInterface {
-    @GET("/heirloom")
+    @GET("heirloom")
     Call<List<Heirloom>> listHeirloom();
 
-    @GET("/legends")
+    @GET("legends")
     Call<List<Legends>> listLegends();
 
     @GET("/weapon")
