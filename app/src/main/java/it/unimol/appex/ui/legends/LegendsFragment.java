@@ -9,16 +9,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import it.unimol.appex.databinding.FragmentHomeBinding;
+import it.unimol.appex.databinding.FragmentLegendsBinding;
 
 public class LegendsFragment extends Fragment {
 
-    private FragmentHomeBinding binding;
+    private FragmentLegendsBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding = FragmentLegendsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textHome;

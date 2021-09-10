@@ -14,9 +14,25 @@ public class Heirloom {
 
     @SerializedName("Nome_heirloom")
     @Expose
-    private int nomeHeriloom;
+    private String nomeHeriloom;
 
     @SerializedName("img")
     @Expose
-    private int imgHeirloom;
+    private String imgHeirloom;
+
+    public int getIdHeirloom() {
+        return idHeirloom;
+    }
+
+    public int getIdLegends() {
+        return idLegends;
+    }
+
+    public String getNomeHeriloom() {
+        return nomeHeriloom;
+    }
+
+    public String getImgHeirloom() {
+        return imgHeirloom;
+    }
 }

@@ -1,7 +1,5 @@
 package it.unimol.appex.ui.rank;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -25,7 +23,7 @@ public class RankFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.rank_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_rank, container, false);
     }
 
    /* @Override

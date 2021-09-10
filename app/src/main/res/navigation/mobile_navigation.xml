@@ -9,19 +9,19 @@
         android:id="@+id/nav_home"
         android:name="it.unimol.appex.ui.legends.LegendsFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_legends" />
 
     <fragment
         android:id="@+id/nav_gallery"
         android:name="it.unimol.appex.ui.weapon.WeaponFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/fragment_weapon" />
 
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="it.unimol.appex.ui.heirloom.HeirloomFragment"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_heirloom" />
 
     <fragment
         android:id="@+id/nav_user"
