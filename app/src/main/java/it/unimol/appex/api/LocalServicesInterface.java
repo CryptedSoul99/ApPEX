@@ -3,7 +3,7 @@ package it.unimol.appex.api;
 import java.util.List;
 
 import it.unimol.appex.model.Heirloom;
-import it.unimol.appex.model.Legends;
+import it.unimol.appex.model.Legend;
 import it.unimol.appex.model.Rank;
 import it.unimol.appex.model.Weapon;
 import retrofit2.Call;
@@ -14,7 +14,7 @@ public interface LocalServicesInterface {
     Call<List<Heirloom>> listHeirloom();
 
     @GET("legends")
-    Call<List<Legends>> listLegends();
+    Call<List<Legend>> listLegends();
 
     @GET("/weapon")
     Call<List<Weapon>> listWeapon();

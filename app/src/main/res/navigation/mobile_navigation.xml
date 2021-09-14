@@ -3,24 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
+
     app:startDestination="@+id/nav_user">
 
     <fragment
-        android:id="@+id/nav_home"
+        android:id="@+id/nav_legends"
         android:name="it.unimol.appex.ui.legends.LegendsFragment"
-        android:label="@string/menu_home"
+        android:label="@string/menu_legends"
         tools:layout="@layout/fragment_legends" />
 
     <fragment
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_weapon"
         android:name="it.unimol.appex.ui.weapon.WeaponFragment"
-        android:label="@string/menu_gallery"
+        android:label="@string/menu_weapon"
         tools:layout="@layout/fragment_weapon" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/nav_heirloom"
         android:name="it.unimol.appex.ui.heirloom.HeirloomFragment"
-        android:label="@string/menu_slideshow"
+        android:label="@string/menu_heirloom"
         tools:layout="@layout/fragment_heirloom" />
 
     <fragment

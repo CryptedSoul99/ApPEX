@@ -8,14 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import org.jetbrains.annotations.NotNull;
-
 import java.util.List;
-
 import it.unimol.appex.R;
 import it.unimol.appex.model.Heirloom;
 

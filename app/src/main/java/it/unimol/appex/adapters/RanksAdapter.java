@@ -13,31 +13,32 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import it.unimol.appex.R;
-import it.unimol.appex.model.Legend;
+import it.unimol.appex.model.Heirloom;
+import it.unimol.appex.model.Rank;
 
-public class LegendsAdapter extends RecyclerView.Adapter<LegendsAdapter.LegendItemHolder>{
+public class RanksAdapter extends RecyclerView.Adapter<RanksAdapter.RankItemHolder> {
 
-    private List<Legend> legends;
+    private List<Rank> ranks;
 
-    public LegendsAdapter(List<Legend> legends) {
-        this.legends = legends;
+    public RanksAdapter(List<Rank> ranks) {
+        this.ranks = ranks;
     }
 
     @NonNull
     @NotNull
     @Override
-    public LegendItemHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        return new LegendsAdapter.LegendItemHolder(LayoutInflater.from(parent.getContext())
+    public RanksAdapter.RankItemHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+        return new RanksAdapter.RankItemHolder(LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_row, parent,false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull LegendItemHolder holder, int position) {
-        Legend legend = legends.get(position);
-        holder.itemTitle.setText(legend.getNameLegend());
-        holder.subtitle.setText(legend.getUltimateLegend());
+    public void onBindViewHolder(@NonNull @NotNull RanksAdapter.RankItemHolder holder, int position) {
+        Rank rank = ranks.get(position);
+        holder.itemTitle.setText(rank.getLeagueRank());
+        holder.subtitle.setText(rank.getEntryPointRank());
 
-        String pureBase64Encoded = legend.getImgLegends().substring(legend.getImgLegends()
+        String pureBase64Encoded = rank.getImgRank().substring(rank.getImgRank()
                 .indexOf(",")  + 1);
 
         byte[] decodedString = Base64.decode(pureBase64Encoded, Base64.DEFAULT);
@@ -47,17 +48,17 @@ public class LegendsAdapter extends RecyclerView.Adapter<LegendsAdapter.LegendIt
 
     @Override
     public int getItemCount() {
-        return legends.size();
+        return ranks.size();
     }
 
-    public class LegendItemHolder extends RecyclerView.ViewHolder {
+    public class RankItemHolder extends RecyclerView.ViewHolder{
 
         public TextView itemTitle;
         public TextView subtitle;
         public ImageView imageItem;
 
 
-        public LegendItemHolder(@NonNull @NotNull View itemView) {
+        public RankItemHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             this.itemTitle = itemView.findViewById(R.id.itemTitle);
             this.subtitle = itemView.findViewById(R.id.subtitle);

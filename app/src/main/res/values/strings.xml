@@ -7,9 +7,9 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Legends</string>
-    <string name="menu_gallery">Weapon</string>
-    <string name="menu_slideshow">Heirloom</string>
+    <string name="menu_legends">Legends</string>
+    <string name="menu_weapon">Weapon</string>
+    <string name="menu_heirloom">Heirloom</string>
     <string name="menu_user">User</string>
     <string name="menu_rank">Rank</string>
 </resources>
