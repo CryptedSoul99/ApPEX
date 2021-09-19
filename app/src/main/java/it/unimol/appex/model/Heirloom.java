@@ -16,9 +16,17 @@ public class Heirloom {
     @Expose
     private String nomeHeriloom;
 
+    @SerializedName("Descrizione")
+    @Expose
+    private String descrizioneHeirloom;
+
     @SerializedName("img")
     @Expose
     private String imgHeirloom;
+
+    @SerializedName("Nome")
+    @Expose
+    private String nomeLeggenda;
 
     public int getIdHeirloom() {
         return idHeirloom;
@@ -32,7 +40,15 @@ public class Heirloom {
         return nomeHeriloom;
     }
 
+    public String getDescrizioneHeirloom() {
+        return descrizioneHeirloom;
+    }
+
     public String getImgHeirloom() {
         return imgHeirloom;
+    }
+
+    public String getNomeLeggenda() {
+        return nomeLeggenda;
     }
 }

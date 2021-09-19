@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/toolbar"
+    android:background="@drawable/splashscreen"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="300dp"
+        android:background="@color/white"
+        android:text="Enter your Username"
+        android:textAlignment="center"
+        android:textColor="#372c24" />
+
+
+    <Spinner
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:entries="@array/platform"
+        android:padding="5dp"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:background="@drawable/side_nav_bar"
+        android:text="Login"
+        android:textColor="#C3B899"
+        android:textStyle="bold"/>
+
+</LinearLayout>

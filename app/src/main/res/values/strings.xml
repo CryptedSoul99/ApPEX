@@ -12,4 +12,11 @@
     <string name="menu_heirloom">Heirloom</string>
     <string name="menu_user">User</string>
     <string name="menu_rank">Rank</string>
+
+    <string-array name="platform">
+        <item>Ps4</item>
+        <item>Xbox</item>
+        <item>Pc</item>
+    </string-array>
+
 </resources>

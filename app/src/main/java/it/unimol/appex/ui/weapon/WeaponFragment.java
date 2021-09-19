@@ -7,18 +7,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
+import com.google.gson.Gson;
+
 import java.util.List;
+
+import it.unimol.appex.R;
 import it.unimol.appex.adapters.WeaponsAdapter;
-import it.unimol.appex.api.LocalApiClient;
+import it.unimol.appex.api.PersonalApiClient;
 import it.unimol.appex.databinding.FragmentWeaponBinding;
 import it.unimol.appex.model.Weapon;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class WeaponFragment extends Fragment {
+public class WeaponFragment extends Fragment implements WeaponsAdapter.OnWeaponListner{
 
     private FragmentWeaponBinding binding;
 
@@ -44,11 +50,12 @@ public class WeaponFragment extends Fragment {
     }
 
     private void loadWeapon() {
-        LocalApiClient.getLocalClient().listWeapon().enqueue(new Callback<List<Weapon>>() {
+        PersonalApiClient.getLocalClient().listWeapon().enqueue(new Callback<List<Weapon>>() {
             @Override
             public void onResponse(Call<List<Weapon>> call, Response<List<Weapon>> response) {
                 Log.v("Chiamata", "Success");
-                binding.weaponList.setAdapter(new WeaponsAdapter(response.body()));
+                binding.weaponList.setAdapter(new WeaponsAdapter(response.body(),
+                        WeaponFragment.this::onWeaponClick));
             }
 
             @Override
@@ -59,5 +66,12 @@ public class WeaponFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onWeaponClick(Weapon weapon, int position){
+        Bundle bundle = new Bundle();
+        bundle.putString("weaponJson", new Gson().toJson(weapon));
 
+        Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_main)
+                .navigate(R.id.nav_weapon_detail, bundle);
+    }
 }

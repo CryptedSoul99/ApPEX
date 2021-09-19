@@ -13,6 +13,10 @@ public class Legend {
     @Expose
     private String nameLegend;
 
+    @SerializedName("Descrizione")
+    @Expose
+    private String descriptionLegend;
+
     @SerializedName("Passiva")
     @Expose
     private String passiveLegend;
@@ -35,6 +39,10 @@ public class Legend {
 
     public String getNameLegend() {
         return nameLegend;
+    }
+
+    public String getDescriptionLegend() {
+        return descriptionLegend;
     }
 
     public String getPassiveLegend() {

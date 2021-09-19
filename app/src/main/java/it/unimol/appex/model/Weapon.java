@@ -13,6 +13,10 @@ public class Weapon {
     @Expose
     private String nameWeapon;
 
+    @SerializedName("Descrizione")
+    @Expose
+    private String descriptionWeapon;
+
     @SerializedName("Tipo")
     @Expose
     private String typeWeapon;
@@ -45,42 +49,48 @@ public class Weapon {
     @Expose
     private int legendWeapon;
 
+    //no
     public int getIdWeapon() {
         return idWeapon;
     }
-
+    //si aggiungere descrizione.
     public String getNameWeapon() {
         return nameWeapon;
     }
 
+    public String getDescriptionWeapon() {
+        return descriptionWeapon;
+    }
+
+    //si
     public String getTypeWeapon() {
         return typeWeapon;
     }
-
+    //si
     public String getFireModWeapon() {
         return fireModWeapon;
     }
-
+    //si
     public String getHopupWeapon() {
         return hopupWeapon;
     }
-
+    //si
     public String getAmmoWeapon() {
         return ammoWeapon;
     }
-
+    //si
     public int getDamageWeapon() {
         return damageWeapon;
     }
-
+    //si
     public String getImgWeapon() {
         return imgWeapon;
     }
-
+//si
     public int getRarityWeapon() {
         return rarityWeapon;
     }
-
+    //no
     public int getLegendWeapon() {
         return legendWeapon;
     }

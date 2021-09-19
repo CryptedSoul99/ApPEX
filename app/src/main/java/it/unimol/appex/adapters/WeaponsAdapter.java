@@ -19,9 +19,11 @@ import it.unimol.appex.model.Weapon;
 public class WeaponsAdapter extends RecyclerView.Adapter<WeaponsAdapter.WeaponItemHolder>{
 
     private List<Weapon> weapons;
+    private OnWeaponListner listner;
 
-    public WeaponsAdapter(List<Weapon> weapons) {
+    public WeaponsAdapter(List<Weapon> weapons, OnWeaponListner listner) {
         this.weapons = weapons;
+        this.listner = listner;
     }
 
     @NonNull
@@ -29,7 +31,7 @@ public class WeaponsAdapter extends RecyclerView.Adapter<WeaponsAdapter.WeaponIt
     @Override
     public WeaponsAdapter.WeaponItemHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         return new WeaponsAdapter.WeaponItemHolder(LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_row, parent,false));
+                .inflate(R.layout.list_row, parent,false), this.listner);
     }
 
     @Override
@@ -52,19 +54,30 @@ public class WeaponsAdapter extends RecyclerView.Adapter<WeaponsAdapter.WeaponIt
         return weapons.size();
     }
 
+    public interface OnWeaponListner{
+        void onWeaponClick(Weapon weapon, int position);
+    }
 
-    public class WeaponItemHolder extends RecyclerView.ViewHolder {
+    public class WeaponItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public TextView itemTitle;
         public TextView subtitle;
         public ImageView imageItem;
+        public OnWeaponListner onWeaponListner;
 
 
-        public WeaponItemHolder(@NonNull @NotNull View itemView) {
+        public WeaponItemHolder(@NonNull @NotNull View itemView, OnWeaponListner onWeaponListner) {
             super(itemView);
             this.itemTitle = itemView.findViewById(R.id.itemTitle);
             this.subtitle = itemView.findViewById(R.id.subtitle);
             this.imageItem = itemView.findViewById(R.id.image_item);
+            this.onWeaponListner = onWeaponListner;
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v){
+            onWeaponListner.onWeaponClick(weapons.get(getAdapterPosition()), getAdapterPosition());
         }
     }
 }

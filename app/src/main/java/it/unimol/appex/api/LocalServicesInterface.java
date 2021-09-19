@@ -16,9 +16,9 @@ public interface LocalServicesInterface {
     @GET("legends")
     Call<List<Legend>> listLegends();
 
-    @GET("/weapon")
+    @GET("weapon")
     Call<List<Weapon>> listWeapon();
 
-    @GET("/rank")
+    @GET("rank")
     Call<List<Rank>> listRank();
 }

@@ -36,4 +36,24 @@
         android:label="@string/menu_rank"
         tools:layout="@layout/fragment_user" />
 
+    <fragment
+        android:id="@+id/nav_legend_detail"
+        android:name="it.unimol.appex.ui.legends.LegendsDetailFragment"
+        tools:layout="@layout/fragment_detail"/>
+
+    <fragment
+        android:id="@+id/nav_heirloom_detail"
+        android:name="it.unimol.appex.ui.heirloom.HeirloomDetailFragment"
+        tools:layout="@layout/fragment_detail"/>
+
+    <fragment
+        android:id="@+id/nav_rank_detail"
+        android:name="it.unimol.appex.ui.rank.RankDetailFragment"
+        tools:layout="@layout/fragment_detail"/>
+
+    <fragment
+        android:id="@+id/nav_weapon_detail"
+        android:name="it.unimol.appex.ui.weapon.WeaponDetailFragment"
+        tools:layout="@layout/fragment_weapon_detail"/>
+
 </navigation>

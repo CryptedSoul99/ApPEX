@@ -18,24 +18,26 @@ import it.unimol.appex.model.Heirloom;
 public class HeirloomsAdapter extends RecyclerView.Adapter<HeirloomsAdapter.HeirloomItemHolder> {
 
     private List<Heirloom> heirlooms;
+    private OnHeirloomListner listner;
 
-    public HeirloomsAdapter(List<Heirloom> heirlooms) {
+    public HeirloomsAdapter(List<Heirloom> heirlooms, OnHeirloomListner listner) {
         this.heirlooms = heirlooms;
+        this.listner = listner;
     }
 
     @NonNull
     @NotNull
     @Override
     public HeirloomItemHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        return new HeirloomItemHolder(LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_row, parent,false));
+        return new HeirloomsAdapter.HeirloomItemHolder(LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.list_row, parent,false), this.listner);
     }
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull HeirloomItemHolder holder, int position) {
         Heirloom heirloom = heirlooms.get(position);
         holder.itemTitle.setText(heirloom.getNomeHeriloom());
-        holder.subtitle.setText(heirloom.getIdLegends() + "");
+        holder.subtitle.setText(heirloom.getNomeLeggenda());
 
         String pureBase64Encoded = heirloom.getImgHeirloom().substring(heirloom.getImgHeirloom()
                 .indexOf(",")  + 1);
@@ -50,20 +52,31 @@ public class HeirloomsAdapter extends RecyclerView.Adapter<HeirloomsAdapter.Heir
         return heirlooms.size();
     }
 
-    public class HeirloomItemHolder extends RecyclerView.ViewHolder{
+    public interface OnHeirloomListner{
+        void onHeirloomClick(Heirloom heirloom, int position);
+    }
+
+    public class HeirloomItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public TextView itemTitle;
         public TextView subtitle;
         public ImageView imageItem;
+        public OnHeirloomListner onHeirloomListner;
 
 
-        public HeirloomItemHolder(@NonNull @NotNull View itemView) {
+        public HeirloomItemHolder(@NonNull @NotNull View itemView, OnHeirloomListner onHeirloomListner) {
             super(itemView);
             this.itemTitle = itemView.findViewById(R.id.itemTitle);
             this.subtitle = itemView.findViewById(R.id.subtitle);
             this.imageItem = itemView.findViewById(R.id.image_item);
+            this.onHeirloomListner = onHeirloomListner;
+            itemView.setOnClickListener(this);
+        }
+
+
+        @Override
+        public void onClick(View v) {
+            onHeirloomListner.onHeirloomClick(heirlooms.get(getAdapterPosition()), getAdapterPosition());
         }
     }
 }
-
-

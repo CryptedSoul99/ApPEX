@@ -21,6 +21,10 @@ public class Rank {
     @Expose
     private String leagueRank;
 
+    @SerializedName("Descrizione")
+    @Expose
+    private String descriptionRank;
+
     @SerializedName("Img_rank")
     @Expose
     private String imgRank;
@@ -39,6 +43,10 @@ public class Rank {
 
     public String getLeagueRank() {
         return leagueRank;
+    }
+
+    public String getDescriptionRank() {
+        return descriptionRank;
     }
 
     public String getImgRank() {

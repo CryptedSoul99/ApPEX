@@ -18,9 +18,11 @@ import it.unimol.appex.model.Legend;
 public class LegendsAdapter extends RecyclerView.Adapter<LegendsAdapter.LegendItemHolder>{
 
     private List<Legend> legends;
+    private OnLegendListner listner;
 
-    public LegendsAdapter(List<Legend> legends) {
+    public LegendsAdapter(List<Legend> legends, OnLegendListner listner) {
         this.legends = legends;
+        this.listner = listner;
     }
 
     @NonNull
@@ -28,7 +30,7 @@ public class LegendsAdapter extends RecyclerView.Adapter<LegendsAdapter.LegendIt
     @Override
     public LegendItemHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         return new LegendsAdapter.LegendItemHolder(LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_row, parent,false));
+                .inflate(R.layout.list_row, parent,false), this.listner);
     }
 
     @Override
@@ -50,18 +52,30 @@ public class LegendsAdapter extends RecyclerView.Adapter<LegendsAdapter.LegendIt
         return legends.size();
     }
 
-    public class LegendItemHolder extends RecyclerView.ViewHolder {
+    public interface OnLegendListner{
+        void onLegendClick(Legend legend, int position);
+    }
+
+    public class LegendItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView itemTitle;
         public TextView subtitle;
         public ImageView imageItem;
+        public OnLegendListner onLegendListner;
 
 
-        public LegendItemHolder(@NonNull @NotNull View itemView) {
+        public LegendItemHolder(@NonNull @NotNull View itemView, OnLegendListner onLegendListner) {
             super(itemView);
             this.itemTitle = itemView.findViewById(R.id.itemTitle);
             this.subtitle = itemView.findViewById(R.id.subtitle);
             this.imageItem = itemView.findViewById(R.id.image_item);
+            this.onLegendListner = onLegendListner;
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            onLegendListner.onLegendClick(legends.get(getAdapterPosition()), getAdapterPosition());
         }
     }
 }

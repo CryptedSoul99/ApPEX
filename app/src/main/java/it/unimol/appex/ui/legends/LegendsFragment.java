@@ -5,27 +5,27 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.gson.Gson;
+
 import java.util.List;
 
-import it.unimol.appex.adapters.HeirloomsAdapter;
+import it.unimol.appex.R;
 import it.unimol.appex.adapters.LegendsAdapter;
-import it.unimol.appex.api.LocalApiClient;
-import it.unimol.appex.databinding.FragmentHeirloomBinding;
+import it.unimol.appex.api.PersonalApiClient;
 import it.unimol.appex.databinding.FragmentLegendsBinding;
-import it.unimol.appex.model.Heirloom;
 import it.unimol.appex.model.Legend;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LegendsFragment extends Fragment {
+public class LegendsFragment extends Fragment implements LegendsAdapter.OnLegendListner{
 
     private FragmentLegendsBinding binding;
 
@@ -51,11 +51,12 @@ public class LegendsFragment extends Fragment {
     }
 
     public void loadLegend() {
-        LocalApiClient.getLocalClient().listLegends().enqueue(new Callback<List<Legend>>() {
+        PersonalApiClient.getLocalClient().listLegends().enqueue(new Callback<List<Legend>>() {
             @Override
             public void onResponse(Call<List<Legend>> call, Response<List<Legend>> response) {
                 Log.v("Chiamata", "Success");
-                binding.legendsList.setAdapter(new LegendsAdapter(response.body()));
+                binding.legendsList.setAdapter(new LegendsAdapter(response.body(),
+                        LegendsFragment.this::onLegendClick));
             }
 
             @Override
@@ -64,5 +65,14 @@ public class LegendsFragment extends Fragment {
                 t.printStackTrace();
             }
         });
+    }
+
+    @Override
+    public void onLegendClick(Legend legend, int position) {
+        Bundle bundle = new Bundle();
+        bundle.putString("legendJson", new Gson().toJson(legend));
+
+        Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_main)
+                .navigate(R.id.nav_legend_detail, bundle);
     }
 }
