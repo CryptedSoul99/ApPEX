@@ -39,7 +39,7 @@ public class WeaponDetailFragment extends Fragment {
         binding.nameDetail.setText(weapon.getNameWeapon());
         binding.descriptionDetail.setText(weapon.getDescriptionWeapon());
         binding.ammoTypeDetail.setText(weapon.getAmmoWeapon());
-        binding.damageDetail.setText(weapon.getDamageWeapon());
+        binding.damageDetail.setText(String.valueOf(weapon.getDamageWeapon()));
         binding.fireModDetail.setText(weapon.getFireModWeapon());
         binding.hopUpDetail.setText(weapon.getHopupWeapon());
         binding.TypeDetail.setText(weapon.getTypeWeapon());

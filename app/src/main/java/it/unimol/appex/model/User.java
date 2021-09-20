@@ -41,12 +41,13 @@ public class User {
             public String rankArenaName;
         }
 
-        @SerializedName("realtime")
-        public RealtimeJson realtimeJson;
-        public class RealtimeJson{
-            @SerializedName("global.realtime.selectedLegend")
-            @Expose
-            public String selectedLegend;
-        }
+    }
+
+    @SerializedName("realtime")
+    public RealtimeJson realtimeJson;
+    public class RealtimeJson{
+        @SerializedName("global.realtime.selectedLegend")
+        @Expose
+        public String selectedLegend;
     }
 }

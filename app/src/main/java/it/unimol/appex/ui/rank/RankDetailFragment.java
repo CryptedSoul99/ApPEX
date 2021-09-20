@@ -38,8 +38,8 @@ public class RankDetailFragment extends Fragment {
 
         binding.nameDetail.setText(rank.getLeagueRank());
         binding.descriptionDetail.setText(rank.getDescriptionRank());
-        //binding.tacticalDetail.setText(rank.getEntryPointRank());
-        //binding.passiveDetail.setText(rank.getEntryCostRank());
+        binding.tacticalDetail.setText(String.valueOf(rank.getEntryPointRank()));
+        binding.passiveDetail.setText(String.valueOf(rank.getEntryCostRank()));
 
 
         return root;

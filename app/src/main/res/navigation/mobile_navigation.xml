@@ -4,8 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
 
-    app:startDestination="@+id/nav_user">
+    app:startDestination="@+id/nav_login">
 
+    <fragment
+        android:id="@+id/nav_login"
+        android:name="it.unimol.appex.ui.user.LoginFragment"
+        android:label="@string/login"
+        tools:layout="@layout/login_page"/>
     <fragment
         android:id="@+id/nav_legends"
         android:name="it.unimol.appex.ui.legends.LegendsFragment"

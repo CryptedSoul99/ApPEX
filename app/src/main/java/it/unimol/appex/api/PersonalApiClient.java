@@ -12,7 +12,7 @@ public class PersonalApiClient {
                 .create();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://gitlabsfagnano.ddns.net:5000")
+                .baseUrl("https://appex.redhitmark.ddnsfree.com/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 

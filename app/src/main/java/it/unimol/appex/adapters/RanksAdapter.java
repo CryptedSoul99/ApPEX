@@ -38,7 +38,7 @@ public class RanksAdapter extends RecyclerView.Adapter<RanksAdapter.RankItemHold
     public void onBindViewHolder(@NonNull @NotNull RanksAdapter.RankItemHolder holder, int position) {
         Rank rank = ranks.get(position);
         holder.itemTitle.setText(rank.getLeagueRank());
-        holder.subtitle.setText(rank.getEntryCostRank());
+        holder.subtitle.setText(String.valueOf(rank.getEntryCostRank()));
 
         String pureBase64Encoded = rank.getImgRank().substring(rank.getImgRank()
                 .indexOf(",")  + 1);

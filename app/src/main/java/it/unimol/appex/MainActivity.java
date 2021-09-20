@@ -33,15 +33,17 @@ public class MainActivity extends AppCompatActivity {
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.ea.com/it-it/games/apex-legends/news")));
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("https://www.ea.com/it-it/games/apex-legends/news")));
             }
         });
+
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_legends, R.id.nav_weapon, R.id.nav_heirloom, R.id.nav_rank, R.id.nav_user)
+                R.id.nav_legends, R.id.nav_weapon, R.id.nav_heirloom, R.id.nav_rank, R.id.nav_login)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);

@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -34,7 +35,13 @@ public class UserFragment extends Fragment{
         binding = FragmentUserBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        loadUser();
+
+        String userName = getArguments().getString("userName");
+        String platform = getArguments().getString("platform");
+        Log.v("success", userName);
+        Log.v("success", platform);
+
+            loadUser(userName, platform);
 
         return root;
     }
@@ -45,9 +52,10 @@ public class UserFragment extends Fragment{
         binding = null;
     }
 
-    private void loadUser(){
+    private void loadUser(String userName, String platform ){
+
         OfficalApiClient.getOfficialClient().getUser(OfficalApiClient.version,
-                "PS4", "Crypted_Soul99", OfficalApiClient.auth)
+                platform, userName, OfficalApiClient.auth)
                 .enqueue(new Callback<User>() {
                              @Override
                              public void onResponse(Call<User> call,@NonNull Response<User> response) {
@@ -61,8 +69,15 @@ public class UserFragment extends Fragment{
                                      binding.rankScore.setText(String.valueOf(response.body().globalJson.rankJson.rankScore));
                                      binding.rankName.setText(response.body().globalJson.rankJson.rankName);
                                      binding.rankScoreArena.setText(String.valueOf(response.body().globalJson.arenaJson.rankArenaScore));
-                                     binding.rankNameArena.setText(response.body().globalJson.arenaJson.rankArenaName);
-                                     binding.selectedLegends.setText(response.body().globalJson.realtimeJson.selectedLegend);
+                                     //binding.selectedLegends.setText(response.body().realtimeJson.selectedLegend);
+
+                                     if (response.body().globalJson.arenaJson.rankArenaName != null){
+                                         binding.rankNameArena.setText(response.body().globalJson.arenaJson.rankArenaName);
+                                     }else
+                                     {
+                                         binding.rankNameArena.setText("Unknown");
+                                     }
+
                                  }
                              }
 
