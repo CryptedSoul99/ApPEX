@@ -224,7 +224,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView23"
+            android:id="@+id/selectedLegends"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_weight="1"

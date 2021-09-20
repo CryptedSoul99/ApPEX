@@ -53,17 +53,16 @@ public class UserFragment extends Fragment{
                              public void onResponse(Call<User> call,@NonNull Response<User> response) {
                                  if (response.body() != null) {
                                      Log.v("Chiamata", "Success");
-                                     Log.v("Chiamata", response.body().globalJson.rankJson.rankName);
 
-                                     binding.userName.setText(response.body().globalJson.userName);
-                                     binding.level.setText(String.valueOf(response.body().globalJson.level));
                                      Picasso.get().load(response.body().globalJson.rankJson.rankImg).into(binding.userImage);
-                                 /*binding.userName.setText(response.body().globalJson.userName);
-                                 binding.userName.setText(response.body().globalJson.userName);
-                                 binding.userName.setText(response.body().globalJson.userName);
-                                 binding.userName.setText(response.body().globalJson.userName);
-                                 binding.userName.setText(response.body().globalJson.userName);
-                                 binding.userName.setText(response.body().globalJson.userName);*/
+                                     binding.userName.setText(response.body().globalJson.userName);
+                                     binding.platform.setText(response.body().globalJson.platform);
+                                     binding.level.setText(String.valueOf(response.body().globalJson.level));
+                                     binding.rankScore.setText(String.valueOf(response.body().globalJson.rankJson.rankScore));
+                                     binding.rankName.setText(response.body().globalJson.rankJson.rankName);
+                                     binding.rankScoreArena.setText(String.valueOf(response.body().globalJson.arenaJson.rankArenaScore));
+                                     binding.rankNameArena.setText(response.body().globalJson.arenaJson.rankArenaName);
+                                     binding.selectedLegends.setText(response.body().globalJson.realtimeJson.selectedLegend);
                                  }
                              }
 
